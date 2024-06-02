@@ -1,4 +1,3 @@
-# import re
 import dash
 from dash import html, dcc
 from dash.dependencies import Input, Output, State
@@ -46,7 +45,7 @@ app.layout = dbc.Container(
                                 }
                             
                             )
-                    ], xs=9, sm=9, md=9, lg=9, xl=9, xxl=9
+                    ], xs=12, sm=9, md=9, lg=6, xl=6, xxl=5
                 ),
 
                 dbc.Col(
@@ -58,28 +57,28 @@ app.layout = dbc.Container(
                             'margin': '30px 0px 0px 0px', 
                             'margin-bottom': '0px'
                             }
-                        )
+                        ), xs=6, sm=6, md=4, lg=4, xl=4, xxl=3
                 ),
                 dbc.Col(
                     html.Img(
                         src='assets/insight.png',
-                        style={'height': '45px', 'width': '100%', 'margin': '20px 0px 0px -20px'}
+                        style={'height': '50px', 'width': '100%', 'margin': '20px 0px 0px 80px'}
                     ),
-                    xs=6, sm=6, md=3, lg=3, xl=1, xxl=1
+                    xs=2, sm=2, md=2, lg=1, xl=1, xxl=1
                 )
-            ]
+            ], justify='middle'
         ),
         html.Br(),
         html.Hr(style={"color": 'grey', 'borderWidth': '2px', 'margin': '0px 0px 0px 0px'}),
         html.Br(),
         dbc.Row(
             [
-                dbc.Col(id='reviews_card', width=2),
-                dbc.Col(id='products_card', width=2),
-                dbc.Col(id='rating_card', width=2),
-                dbc.Col(id='5_stars_card', width=2),
-                dbc.Col(id='1_stars_card', width=2)
-            ], style = {"margin": "0px 0px 0px 200px"}
+                dbc.Col(id='reviews_card', width=1, xs=6, sm=6, md=3, lg=2, xl=2, xxl=2),
+                dbc.Col(id='products_card', width=1, xs=6, sm=6, md=3, lg=2, xl=2, xxl=2),
+                dbc.Col(id='rating_card', width=1, xs=6, sm=6, md=3, lg=2, xl=2, xxl=2),
+                dbc.Col(id='5_stars_card', width=1,xs=6, sm=6, md=3, lg=2, xl=2, xxl=2),
+                dbc.Col(id='1_stars_card', width=1, xs=6, sm=6, md=3, lg=2, xl=2, xxl=2)
+            ], style = {"margin": "0px 0px 0px 80px"}
         ),
         dcc.Interval(id='interval-component', interval=600000, n_intervals=0),
         html.Br(),
@@ -87,146 +86,108 @@ app.layout = dbc.Container(
         dbc.Row(
             [
                 dbc.Col(
-                    
-                        # html.H4(
-                        #     'Select Variable ',
-                        #     style={'textAlign': 'left', "color": 'SeaGreen', "margin": '-35px 0px 0px 135px', 'font-size': "15px"}
-                        # ),
-                        dcc.Dropdown(
-                            id='dropdown1',
-                            options=[{"label": i, 'value': i} for i in ["Product type", 'Age group', 'Frequency level']],
-                            value='Product type',
-                            style={"margin": "-10px 0px 5px 65px", 
-                                    "width": "150px", 
-                                    'font-size': "13px"
-                                    }
-                        )
-                    
-                ),
 
-                dbc.Col(
-                    html.H4(
-                            'Select Variable ',
-                            style={'textAlign': 'left', 
-                                "color": 'SeaGreen', 
-                                "margin": '-0px 0px 0px -45px', 
-                                'font-size': "15px"
-                                }
-                        ),
-
-                ),
-                dbc.Col(
-                    
-                        # html.H4(
-                        #     'Select values ',
-                        #     style={'textAlign': 'left', 'font-size': '15px', "color": 'SeaGreen', "margin": '-35px 0px 0px 138px', 'font-size': "15px"}
-                        # ),
-                        dcc.Dropdown(
-                            id='dropdown2',
-                            value=None,
-                            style={"margin": "-15px 0px 5px 65px", 
-                                    "width": "150px", 'font-size': "12px"}
-                        )
-                    
-                ),
-                dbc.Col(
-                    html.H4(
-                            'Select value ',
-                            style={'textAlign': 'left', 
-                                    'font-size': '15px', 
-                                    "color": 'SeaGreen', 
-                                    "margin": '-5px 0px 0px -45px', 
-                                    'font-size': "15px"}
-                        ),      
-                )
-                # dbc.Col(
-                #     [
-                #         # Additional controls can be added here if needed
-                #     ]
-                # )
-            ]
-        ),
-        dbc.Row(
-            [
-                dbc.Col(
                     [
+                       dcc.Dropdown(
+                                   id='dropdown1',
+                                   options=[{"label": i, 'value': i} for i in ["Product type", 'Age group', 'Frequency level']],
+                                    value='Product type',
+                                   placeholder="Select Variable",
+                                   style=mam.drop_down_style("10px 0px 5px 50px") 
+                                ), 
+                        html.Br(),
+
                         dcc.Graph(id='barchart1', config={'responsive': True},
-                        style={"margin": "-2px 0px 0px 60px", 
-                                "width": "150px"}),
-                    ]
+                                   style={"margin": "-2px 0px 0px -10px", 
+                                    "width": "80px"})
+                    ], xs=12, sm=12, md=3, lg=2, xl=2, xxl=2     
+                    
                 ),
+                dbc.Col(
+                    xs=12, sm=6, md=2, lg=3, xl=3, xxl=4
+                ),
+              
                 dbc.Col(
                     [
+                        dcc.Dropdown(
+                                id='dropdown2',
+                                value=None,
+                                placeholder = 'Select values',
+                                style=(mam.drop_down_style("10px 0px 5px 50px"))
+                        ),
+                        html.Br(),
                         dcc.Graph(id='barchart_2', config={'responsive': True},
-                        style={"margin": "-10px 0px 0px 60px", 
-                                "width": "150px"}),
-                    ]
-                )
-            ]
+                                  style={"margin": "-0px 0px 0px 10px", 
+                                     "width": "80px"})
+                    ], xs=12, sm=12, md=3, lg=2, xl=2, xxl=2
+                    
+                ),        
+            ], justify='middle'
         ),
+     
         dbc.Row(
             [
                 dbc.Col(
-                    html.H6(""),
-                    # style={'textAlign': 'left', "margin": '0px 0px 0px 110px'})
-                ),
-                # html.Br(),
-                # html.Br(),
-                dbc.Col(
-                    dbc.Button(
-                        "Positive Review",
-                        id="positive-reviews-button",
-                        className="me-2",
-                        outline=True,
-                        size = 'sm',
-                        style={'backgroundColor': 'LightSeaGreen', 'color': 'white',
-                        "margin": "-5px 170px 0px 10px"}),
-                         width='auto'
-                
-                )
-                ,
-                dbc.Col(
-                    dbc.Button(
-                        "Negative Review",
-                        id="negative-reviews-button",
-                        outline=True,
-                        size = 'sm',
-                        style={'backgroundColor': '#8C2008', 'color': 'white',
-                        "margin": "-5px 170px 0px 10px"}
-                    ),
-                    width='auto'
-                )
-            ],
-            justify='left'
-        ),
-        dbc.Row(
-            [
-                dbc.Col(
+
                     [
                         dbc.Col(
                             html.H6("Average Ratings by select variable",
                                 style={'textAlign': 'left', 
-                                "margin": '0px 0px 0px 110px'})
+                                "margin": '0px 0px 0px 50px'})
                             ),
                             html.Br(),
                             html.Br(),
-                            html.Div(id='table_container', style={"margin": '0px 0px 0px 125px'}
+                            html.Div(id='table_container', style={"margin": '0px 0px 0px 80px'}
                                                                 
                                 )
-                    
-                    ]       
+                    ]
+
                 ),
 
-                dbc.Col(
-                    dcc.Graph(id = 'doughnut_chart', config = {'responsive': True},
-                    style={"margin": "2px 0px 0px 120px", 
-                                "width": "500px"
-                            }
-                        )
+                html.Br(),
 
-                )
-            ]
-        )
+                dbc.Col(
+                    [
+                        dbc.Row(
+                            [
+                                dbc.Col(
+                                    dbc.Button(
+                                        "Positive Review",
+                                        id="positive-reviews-button",
+                                        className="me-2",
+                                        outline=True,
+                                        size = 'sm',
+                                        style={'backgroundColor': 'LightSeaGreen', 'color': 'white',
+                                        "margin": "0px 0px 0px 50px"}),
+                                        width='auto' 
+                                ),                      
+                                dbc.Col(
+                                    dbc.Button(
+                                        "Negative Review",
+                                        id="negative-reviews-button",
+                                        outline=True,
+                                        size = 'sm',
+                                        style={'backgroundColor': '#8C2008', 'color': 'white',
+                                        "margin": "0px 0px 0px 50px"}
+                                    ),
+                                    width='auto'
+                                )
+                            ]
+                    ),
+                        dbc.Row(
+                            dcc.Graph(id = 'doughnut_chart', config = {'responsive': True},
+                                style={"margin": "2px 0px 0px 30px", 
+                                        "width": "500px"
+                                        }
+                                )
+                         )
+                    ], xs=12, sm=12, md=6, lg=6, xl=6, xxl=6
+                )          
+
+            ],
+            justify='middle'
+        ),
+       
     ]
 )
 
@@ -385,7 +346,7 @@ def get_doughnut_chart(pos_clicks, neg_clicks, pos_state, neg_state):
         problems_pie.update_layout(
             width=500,
             height=400,
-            # title='Problems with Dresses and Tops<br><sup> Negative reviews of 21-50 (Age group)',
+            title='<sup>Negative reviews of 21-50 (Age group) and dresses/tops',
             annotations=[dict(text='Problems', x=0.5, y=0.5, font_size=14, showarrow=False)]
         )
 
@@ -405,7 +366,7 @@ def get_doughnut_chart(pos_clicks, neg_clicks, pos_state, neg_state):
         problems_pie.update_layout(
             width=500,
             height=400,
-            # title='Problems with Dress and Top<br><sup> Negative reviews of 21-50 (Age group)',
+            title='<sup> Negative reviews of 21-50 (Age group) and dresses/tops category',
             annotations=[dict(text='Problems', x=0.5, y=0.5, font_size=14, showarrow=False)]
         )
 
