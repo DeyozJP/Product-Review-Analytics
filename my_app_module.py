@@ -1,5 +1,7 @@
 
 
+
+
 import dash
 import dash_bootstrap_components as dbc
 from dash import html
@@ -149,3 +151,29 @@ def dash_table_format(data_list, agg_data, page_size):
         )
  
 
+def drop_down_style(margin):
+    '''
+    This function takes no argument but returns the style
+    and rsponsive size for the dropdown used in dashboards'''
+    style = {
+        "width": "200px", 
+        'font-size': "13px", 
+        "margin": margin}
+
+
+    
+    return style
+
+
+def component_text(margin):
+    '''
+       This function takes no argument but returns the style
+        and rsponsive size for the text used in dashboards'''
+
+    style= {'textAlign': 'left', 
+            'font-size': '15px', 
+            "color": 'SeaGreen', 
+            "margin": margin, 
+            'font-size': "15px"}
+
+    return style
