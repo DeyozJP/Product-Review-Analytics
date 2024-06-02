@@ -1,4 +1,4 @@
-import re
+# import re
 import dash
 from dash import html, dcc
 from dash.dependencies import Input, Output, State
@@ -19,7 +19,7 @@ problems = pd.read_csv('problems.csv')
 complements = pd.read_csv('complements.csv')
 
 app = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.SPACELAB])
-
+server = app.server
 app.layout = dbc.Container(
     fluid=False,
     style = {'border': '2px solid #ccc', 'border-radius': '5px'},
