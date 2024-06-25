@@ -45,7 +45,7 @@ app.layout = dbc.Container(
                                 }
                             
                             )
-                    ], xs=12, sm=9, md=9, lg=6, xl=6, xxl=5
+                    ], xs=7, sm=7, md=8, lg=8, xl=8, xxl=8
                 ),
 
                 dbc.Col(
@@ -54,15 +54,15 @@ app.layout = dbc.Container(
                             'font-size': 20, 
                             'textAlign': 'left', 
                             'color': 'LightSeaGreen', 
-                            'margin': '30px 0px 0px 0px', 
+                            'margin': '10px 0px 0px 0px', 
                             'margin-bottom': '0px'
                             }
-                        ), xs=6, sm=6, md=4, lg=4, xl=4, xxl=3
+                        ), xs=3, sm=3, md=3, lg=3, xl=3, xxl=3
                 ),
                 dbc.Col(
                     html.Img(
                         src='assets/insight.png',
-                        style={'height': '50px', 'width': '100%', 'margin': '20px 0px 0px 80px'}
+                        style={'height': '50px', 'width': '100%', 'margin': '0px 0px 0px 0px'}
                     ),
                     xs=2, sm=2, md=2, lg=1, xl=1, xxl=1
                 )
@@ -73,12 +73,12 @@ app.layout = dbc.Container(
         html.Br(),
         dbc.Row(
             [
-                dbc.Col(id='reviews_card', width=1, xs=6, sm=6, md=3, lg=2, xl=2, xxl=2),
-                dbc.Col(id='products_card', width=1, xs=6, sm=6, md=3, lg=2, xl=2, xxl=2),
-                dbc.Col(id='rating_card', width=1, xs=6, sm=6, md=3, lg=2, xl=2, xxl=2),
-                dbc.Col(id='5_stars_card', width=1,xs=6, sm=6, md=3, lg=2, xl=2, xxl=2),
-                dbc.Col(id='1_stars_card', width=1, xs=6, sm=6, md=3, lg=2, xl=2, xxl=2)
-            ], style = {"margin": "0px 0px 0px 80px"}
+                dbc.Col(id='reviews_card', width=0.6, xs=6, sm=6, md=3, lg=2, xl=2, xxl=2),
+                dbc.Col(id='products_card', width=0.6, xs=6, sm=6, md=3, lg=2, xl=2, xxl=2),
+                dbc.Col(id='rating_card', width=0.6, xs=6, sm=6, md=3, lg=2, xl=2, xxl=2),
+                dbc.Col(id='5_stars_card', width=0.6,xs=6, sm=6, md=3, lg=2, xl=2, xxl=2),
+                dbc.Col(id='1_stars_card', width=0.6, xs=6, sm=6, md=3, lg=2, xl=2, xxl=2)
+            ], style = {"margin": "0px 0px 0px 120px"}
         ),
         dcc.Interval(id='interval-component', interval=600000, n_intervals=0),
         html.Br(),
@@ -113,12 +113,12 @@ app.layout = dbc.Container(
                                 id='dropdown2',
                                 value=None,
                                 placeholder = 'Select values',
-                                style=(mam.drop_down_style("10px 0px 5px 50px"))
+                                style=(mam.drop_down_style("10px -50px 5px 70px"))
                         ),
                         html.Br(),
                         dcc.Graph(id='barchart_2', config={'responsive': True},
-                                  style={"margin": "-0px 0px 0px 10px", 
-                                     "width": "80px"})
+                                  style={"margin": "0px 0px 0px 0px", 
+                                     "width": "30px"})
                     ], xs=12, sm=12, md=3, lg=2, xl=2, xxl=2
                     
                 ),        
@@ -158,7 +158,7 @@ app.layout = dbc.Container(
                                         outline=True,
                                         size = 'sm',
                                         style={'backgroundColor': 'LightSeaGreen', 'color': 'white',
-                                        "margin": "0px 0px 0px 50px"}),
+                                        "margin": "0px 0px 0px 120px"}),
                                         width='auto' 
                                 ),                      
                                 dbc.Col(
@@ -327,7 +327,7 @@ def get_doughnut_chart(pos_clicks, neg_clicks, pos_state, neg_state):
         # Update the layout
         complement_pie.update_layout(
             width=500,
-            height=400,
+            height=340,
             # title='Complement from all Positive Reviews',
             annotations=[dict(text='Complements', x=0.5, y=0.5, font_size=14, showarrow=False)]
         )
@@ -345,7 +345,7 @@ def get_doughnut_chart(pos_clicks, neg_clicks, pos_state, neg_state):
         # Update the layout
         problems_pie.update_layout(
             width=500,
-            height=400,
+            height=340,
             title='<sup>Negative reviews of 21-50 (Age group) and dresses/tops',
             annotations=[dict(text='Problems', x=0.5, y=0.5, font_size=14, showarrow=False)]
         )
@@ -365,7 +365,7 @@ def get_doughnut_chart(pos_clicks, neg_clicks, pos_state, neg_state):
         # Update the layout
         problems_pie.update_layout(
             width=500,
-            height=400,
+            height=340,
             title='<sup> Negative reviews of 21-50 (Age group) and dresses/tops category',
             annotations=[dict(text='Problems', x=0.5, y=0.5, font_size=14, showarrow=False)]
         )
