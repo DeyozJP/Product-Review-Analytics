@@ -4,8 +4,12 @@ from dash import html
 import pandas as pd
 import dash_table
 
-
+# function to format the number
+def format_number(num):
+    return "{:,}".format(num)
+    
 def create_kpi_card(title, value, color):
+    value = format_number(value)
     return dbc.Card(
         dbc.CardBody(
             [
